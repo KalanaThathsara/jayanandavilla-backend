@@ -10,6 +10,13 @@ const authCustomer = require('./routes/authCustomer')
 const addRoom = require('./routes/addRoom')
 const getRooms = require('./routes/getRooms')
 const viewImage = require('./routes/viewRoomImage')
+const addGallery = require('./routes/addGallery')
+const viewGalleryImage = require('./routes/viewGalleryImage')
+const getGallery = require('./routes/getGallery')
+const bookRooms = require('./routes/bookRoom')
+const getBookings = require('./routes/getBookings')
+const addPackage = require('./routes/addPackage')
+const viewPDF = require('./routes/viewPDF')
 
 const env = require('./envVariables')
 global.appRoot = path.resolve(__dirname);
@@ -26,9 +33,15 @@ app.use('/api/user/register', registerCustomer)
 app.use('/api/user/auth', authCustomer)
 app.use('/api/user/rooms', getRooms)
 app.use('/api/user/room/image', viewImage)
-
+app.use('/api/user/room/book', bookRooms)
+app.use('/api/user/view-pdf', viewPDF)
 
 app.use('/api/admin/addroom', addRoom)
+app.use('/api/admin/gallery', addGallery)
+app.use('/api/admin/get-gallery', getGallery)
+app.use('/api/admin/gallery/view', viewGalleryImage)
+app.use('/api/admin/view-bookings', getBookings)
+app.use('/api/admin/addpackage', addPackage)
 
 
 

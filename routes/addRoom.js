@@ -16,9 +16,9 @@ router.post('/',  async (req, res) => {
     // if(error) return res.status(400).send(error.details[0].message);
     console.log(req.body)
         
-    let roomAvailable = await Room.findOne({ roomNo: req.body.roomNo });
+    // let roomAvailable = await Room.findOne({ roomNo: req.body.roomNo });
 
-    if (!roomAvailable) {
+    // if (!roomAvailable) {
 
         let room = new Room({
             roomNo: req.body.roomNo,
@@ -26,42 +26,44 @@ router.post('/',  async (req, res) => {
             description: req.body.description,
             image: '',
             price: req.body.price,
-            totalQuantity: req.body.quantity,
+            size: req.body.size,
+            quantity: req.body.quantity,
+            discount: '',
+            discountedPrice: '',
             noOfBookings: 0,
-            discount: 0,
-            bookingCombinations: []
+            bookings: []
         });
-        room.combinations.push({ size: req.body.size , qty: req.body.quantity });
 
         roomR = await room.save();
         res.status(200).send(`${req.body.size} Size Room Successfully Saved `);
         console.log("Room recorded result", roomR)
 
         return
-    }
-    else {
+    // }
+    
+    // else {
 
-        let avaiSize = roomAvailable.combinations.filter((c) => {
-            if(c.size == req.body.size) return true
-        })
-        console.log("avai size", avaiSize)
+    //     let avaiSize = roomAvailable.combinations.filter((c) => {
+    //         if(c.size == req.body.size) return true
+    //     })
+    //     console.log("avai size", avaiSize)
 
-        if(avaiSize.length > 0) {
-            roomAvailable.combinations.forEach(p => {
-                if(p.size == req.body.size) p.qty = parseInt(p.qty) +  parseInt(req.body.quantity)
-            });
-            roomAvailable.totalQuantity = parseInt(roomAvailable.totalQuantity)  + parseInt(req.body.quantity)
-            roomAvailable.save()
-            res.status(200).send(`Room Size ${req.body.size} Quantity Successfully Updated`);
-            return
-        }
+    //     if(avaiSize.length > 0) {
+    //         roomAvailable.combinations.forEach(p => {
+    //             if(p.size == req.body.size) p.qty = parseInt(p.qty) +  parseInt(req.body.quantity)
+    //         });
+    //         roomAvailable.totalQuantity = parseInt(roomAvailable.totalQuantity)  + parseInt(req.body.quantity)
+    //         roomAvailable.save()
+    //         res.status(200).send(`Room Size ${req.body.size} Quantity Successfully Updated`);
+    //         return
+    //     }
         
-        roomAvailable.combinations.push({ size: req.body.size , qty: req.body.quantity })
-        roomAvailable.totalQuantity = parseInt(roomAvailable.totalQuantity)  + parseInt(req.body.quantity)
-        console.log("After", roomAvailable)
-        roomAvailable.save()
-        res.status(200).send(`Room Sizes ${req.body.size} Successfully Updated`); 
-    }
+    //     roomAvailable.combinations.push({ size: req.body.size , qty: req.body.quantity })
+    //     roomAvailable.totalQuantity = parseInt(roomAvailable.totalQuantity)  + parseInt(req.body.quantity)
+    //     console.log("After", roomAvailable)
+    //     roomAvailable.save()
+    //     res.status(200).send(`Room Sizes ${req.body.size} Successfully Updated`); 
+    // }
 });
 
 

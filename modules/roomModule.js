@@ -1,10 +1,10 @@
 const Joi = require('joi');
 const mongoose = require('mongoose');
 
-const Sizes = new mongoose.Schema({
-    size : String,
-    qty: Number
-})
+// const Sizes = new mongoose.Schema({
+//     size : String,
+//     qty: Number
+// })
 
 const roomSchema = new mongoose.Schema({
     roomNo: {
@@ -25,20 +25,24 @@ const roomSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    noOfBookings: {
-        type: String
-    },
-    totalQuantity: {
-        type: String
-    },
     discount: {
         type: String
     },
     discountedPrice: {
         type: String
     },
-    combinations: [Sizes],
-    bookingCombinations: [Sizes]
+    size: {
+        type: String
+    },
+    quantity: {
+        type: String
+    },
+    noOfBookings: {
+        type: String
+    },
+    bookings: {
+        type: Array
+    }
 })
 
 
