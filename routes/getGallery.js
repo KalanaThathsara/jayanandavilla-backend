@@ -1,35 +1,21 @@
-const express = require('express');
-const Joi = require('joi');
+const express = require("express");
+const Joi = require("joi");
 const router = express.Router();
 
-const {Gallery} = require('../modules/galleryModule')
+const { Gallery } = require("../modules/galleryModule");
+const { DayoutGallery } = require("../modules/dayoutGalleryModule");
 
-router.get('/',async function(req, res) {
+router.get("/", async function (req, res) {
+  const images = await Gallery.find({});
 
-    const images = await Gallery.find({})
-    
-    res.status(200).send(images)
-
-    // const today = new Date()
-    // const threedaysFromNow = new Date('2021-06-06T13:20:15.990Z')
-    // // threedaysFromNow.setDate( threedaysFromNow.getDate() + 3)
-
-    // getDatesBetweenDates(today, threedaysFromNow)
-
-    // function getDatesBetweenDates(startDate, endDate) {
-    //     let dates = []
-    //     //to avoid modifying the original date
-    //     const theDate = new Date(startDate)
-    //     while (theDate < endDate) {
-    //       dates = [...dates, new Date(theDate)]
-    //       theDate.setDate(theDate.getDate() + 1)
-    //     }
-    //     dates = [...dates, endDate]
-    //     console.log(dates)
-    //     return dates
-    //   }
+  res.status(200).send(images);
 });
 
+router.get("/dayouts", async function (req, res) {
+  console.log("re qcme");
+  const images = await DayoutGallery.find({});
+
+  res.status(200).send(images);
+});
 
 module.exports = router;
-
