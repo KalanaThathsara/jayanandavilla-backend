@@ -72,7 +72,7 @@ async function addImage1(req, res) {
     { packageNo: req.headers.nameofimage.slice(0, -1) },
     {
       $set: {
-        image1: fileToDB.slice(0, -1),
+        image1: fileToDB,
       },
     }
   );
@@ -99,7 +99,7 @@ async function addImage2(req, res) {
     { packageNo: req.headers.nameofimage.slice(0, -1) },
     {
       $set: {
-        image2: fileToDB.slice(0, -1),
+        image2: fileToDB,
       },
     }
   );

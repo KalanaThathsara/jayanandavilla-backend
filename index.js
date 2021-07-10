@@ -20,6 +20,10 @@ const viewCustomer = require("./routes/getCustomers");
 const addDayout = require("./routes/addDayout");
 const dayoutGallery = require("./routes/addDayoutGallery");
 const viewDayoutGalleryImage = require("./routes/viewDayoutGallImage");
+const viewDayoutPackages = require("./routes/getDayoutPackages");
+const viewDayoutImage = require("./routes/viewDayoutImage");
+const viewAllDayPkgImages = require("./routes/viewAllDayoutPkgImages");
+const bookDayoutPackage = require("./routes/addDayoutBooking");
 
 const env = require("./envVariables");
 global.appRoot = path.resolve(__dirname);
@@ -41,6 +45,9 @@ app.use("/api/user/rooms", getRooms);
 app.use("/api/user/room/image", viewImage);
 app.use("/api/user/room/book", bookRooms);
 app.use("/api/user/view-pdf", viewPDF);
+app.use("/api/user/dayout-packages", viewDayoutPackages);
+app.use("/api/user/dayout-package/image", viewAllDayPkgImages);
+app.use("/api/user/dayout-package/book", bookDayoutPackage);
 
 app.use("/api/admin/addroom", addRoom);
 app.use("/api/admin/gallery", addGallery);

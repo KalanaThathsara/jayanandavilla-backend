@@ -41,6 +41,9 @@ const dayoutSchema = new mongoose.Schema({
   discount: {
     type: String,
   },
+  bookings: {
+    type: Array,
+  },
 });
 
 const Dayout = mongoose.model("Dayout", dayoutSchema);
