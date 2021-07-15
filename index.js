@@ -24,6 +24,8 @@ const viewDayoutPackages = require("./routes/getDayoutPackages");
 const viewDayoutImage = require("./routes/viewDayoutImage");
 const viewAllDayPkgImages = require("./routes/viewAllDayoutPkgImages");
 const bookDayoutPackage = require("./routes/addDayoutBooking");
+const getDayoutBookings = require("./routes/getDayoutBookings");
+const viewRecepPackages = require("./routes/getReceptionPackages");
 
 const env = require("./envVariables");
 global.appRoot = path.resolve(__dirname);
@@ -48,7 +50,9 @@ app.use("/api/user/view-pdf", viewPDF);
 app.use("/api/user/dayout-packages", viewDayoutPackages);
 app.use("/api/user/dayout-package/image", viewAllDayPkgImages);
 app.use("/api/user/dayout-package/book", bookDayoutPackage);
+app.use("/api/user/recep-packages", viewRecepPackages);
 
+app.use("/api/admin/view-dayout-bookings", getDayoutBookings);
 app.use("/api/admin/addroom", addRoom);
 app.use("/api/admin/gallery", addGallery);
 app.use("/api/admin/get-gallery", getGallery);

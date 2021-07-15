@@ -9,14 +9,18 @@ router.post("/", async (req, res) => {
 
   const package = await Dayout.findById(req.body.package);
   if (!package.bookings) {
+    // console.log("New booking");
     package.bookings = [];
     package.bookings[0] = req.body.date;
+    package.save();
   } else {
+    // console.log("Curr booking");
     let currBookings = package.bookings;
     currBookings.push(req.body.date);
     package.bookings = currBookings;
+    // console.log("new list", package.bookings);
+    package.save();
   }
-  await package.save();
 
   let newBooking = new DayoutBooking(req.body);
   await newBooking.save();

@@ -14,7 +14,7 @@ const DayoutBooking = mongoose.model(
     },
     package: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Package",
+      ref: "Dayout",
     },
     customer: {
       type: mongoose.Schema.Types.ObjectId,
@@ -22,7 +22,6 @@ const DayoutBooking = mongoose.model(
     },
     numOfPersons: {
       type: Object,
-      ref: "Customer",
     },
     total: {
       type: String,
