@@ -26,6 +26,13 @@ const viewAllDayPkgImages = require("./routes/viewAllDayoutPkgImages");
 const bookDayoutPackage = require("./routes/addDayoutBooking");
 const getDayoutBookings = require("./routes/getDayoutBookings");
 const viewRecepPackages = require("./routes/getReceptionPackages");
+const getUserBookings = require("./routes/getUserBookings");
+const cancelBooking = require("./routes/cancelBooking");
+const getOneBooking = require("./routes/getOneBooking");
+const addReception = require("./routes/addReception");
+const viewAllRecepPkgImages = require("./routes/viewAllRecepPkgImages");
+const bookReception = require("./routes/addReceptionBooking");
+const getReceptionBookings = require("./routes/getReceptionBookings");
 
 const env = require("./envVariables");
 global.appRoot = path.resolve(__dirname);
@@ -50,8 +57,13 @@ app.use("/api/user/view-pdf", viewPDF);
 app.use("/api/user/dayout-packages", viewDayoutPackages);
 app.use("/api/user/dayout-package/image", viewAllDayPkgImages);
 app.use("/api/user/dayout-package/book", bookDayoutPackage);
+app.use("/api/user/bookings", getUserBookings);
+app.use("/api/user/booking/cancel", cancelBooking);
 app.use("/api/user/recep-packages", viewRecepPackages);
+app.use("/api/user/recep-package/image", viewAllRecepPkgImages);
+app.use("/api/user/recep-package/book", bookReception);
 
+app.use("/api/admin/view-recep-bookings", getReceptionBookings);
 app.use("/api/admin/view-dayout-bookings", getDayoutBookings);
 app.use("/api/admin/addroom", addRoom);
 app.use("/api/admin/gallery", addGallery);
@@ -63,6 +75,8 @@ app.use("/api/admin/view-customers", viewCustomer);
 app.use("/api/admin/add-dayout", addDayout);
 app.use("/api/admin/dayout-gallery", dayoutGallery);
 app.use("/api/admin/dayout-gallery/view", viewDayoutGalleryImage);
+app.use("/api/admin/get-one-booking", getOneBooking);
+app.use("/api/admin/add-reception", addReception);
 
 const port = process.env.PORT || 3002;
 app.listen(port, () => console.log(`Listening on port ${port} ...`));

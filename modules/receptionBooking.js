@@ -1,26 +1,29 @@
 const Joi = require("joi");
 const mongoose = require("mongoose");
 
-const Booking = mongoose.model(
-  "Booking",
+const ReceptionBooking = mongoose.model(
+  "ReceptionBooking",
   new mongoose.Schema({
     timeStamp: {
       type: String,
       required: true,
     },
-    dates: {
-      type: Array,
+    date: {
+      type: String,
       required: true,
     },
-    room: {
+    package: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Room",
+      ref: "Reception",
     },
     customer: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Customer",
     },
-    subtotal: {
+    numOfPersons: {
+      type: Object,
+    },
+    total: {
       type: String,
       // required: true
     },
@@ -30,14 +33,5 @@ const Booking = mongoose.model(
   })
 );
 
-// function validateCustomer(customer) {
-//     const schema = {
-//         name : Joi.string().min(5).required(),
-//         phone : Joi.string().min(5).required(),
-//         isGold: Joi.boolean()
-//     };
-//     return Joi.validate(customer, schema);
-// }
-
-exports.Booking = Booking;
+exports.ReceptionBooking = ReceptionBooking;
 // exports.validateCustomer = validateCustomer;

@@ -27,6 +27,9 @@ const DayoutBooking = mongoose.model(
       type: String,
       // required: true
     },
+    status: {
+      type: String,
+    },
   })
 );
 
