@@ -8,7 +8,7 @@ const env = require("../envVariables");
 const { Customer } = require("../modules/customerModule");
 
 router.post("/", async (req, res) => {
-  console.log(req.body);
+  //console.log(req.body);
   // res.send('Received')
 
   // const {error} = validateCustomer(req.body);

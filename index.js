@@ -33,6 +33,7 @@ const addReception = require("./routes/addReception");
 const viewAllRecepPkgImages = require("./routes/viewAllRecepPkgImages");
 const bookReception = require("./routes/addReceptionBooking");
 const getReceptionBookings = require("./routes/getReceptionBookings");
+const addRoomRemark = require("./routes/addRoomRemarks");
 
 const env = require("./envVariables");
 global.appRoot = path.resolve(__dirname);
@@ -77,6 +78,7 @@ app.use("/api/admin/dayout-gallery", dayoutGallery);
 app.use("/api/admin/dayout-gallery/view", viewDayoutGalleryImage);
 app.use("/api/admin/get-one-booking", getOneBooking);
 app.use("/api/admin/add-reception", addReception);
+app.use("/api/admin/add-room-remark", addRoomRemark);
 
 const port = process.env.PORT || 3002;
 app.listen(port, () => console.log(`Listening on port ${port} ...`));

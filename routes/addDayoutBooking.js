@@ -5,7 +5,7 @@ const { Dayout } = require("../modules/dayoutModule");
 const { DayoutBooking } = require("../modules/dayoutBooking");
 
 router.post("/", async (req, res) => {
-  console.log(req.body);
+  //console.log(req.body);
 
   const package = await Dayout.findById(req.body.package);
   if (!package.bookings) {

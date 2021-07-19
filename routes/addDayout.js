@@ -7,12 +7,12 @@ const authCustomer = require("../middleware/authMiddleware");
 const { Dayout } = require("../modules/dayoutModule");
 
 router.post("/", async (req, res) => {
-  // console.log(req.body)
+  // //console.log(req.body)
   // res.send('Received')
 
   // const {error} = validateCustomer(req.body);
   // if(error) return res.status(400).send(error.details[0].message);
-  console.log(req.body);
+  //console.log(req.body);
 
   // let roomAvailable = await Room.findOne({ roomNo: req.body.roomNo });
 

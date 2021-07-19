@@ -5,15 +5,15 @@ const router = express.Router();
 const { Dayout } = require("../modules/dayoutModule");
 const { DayoutBooking } = require("../modules/dayoutBooking");
 
-// router.get("/", async function (req, res) {
-//   const bookings = await Booking.find({})
-//     .sort({ timeStamp: "desc" })
-//     .populate("room")
-//     .populate("customer");
+router.get("/", async function (req, res) {
+  const bookings = await DayoutBooking.find({})
+    .sort({ timeStamp: "desc" })
+    .populate("package")
+    .populate("customer");
 
-//   console.log(bookings);
-//   res.status(200).send(bookings);
-// });
+  // console.log(bookings);
+  res.status(200).send(bookings);
+});
 
 router.get("/all-dates", async function (req, res) {
   let dates = [];

@@ -6,7 +6,7 @@ const router = express.Router();
 const { Reception } = require("../modules/receptionModule");
 
 router.post("/", async (req, res) => {
-  console.log(req.body);
+  //console.log(req.body);
 
   let reception = new Reception({
     packageNo: req.body.packageNo,

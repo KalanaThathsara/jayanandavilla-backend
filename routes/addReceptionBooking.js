@@ -5,7 +5,7 @@ const { Reception } = require("../modules/receptionModule");
 const { ReceptionBooking } = require("../modules/receptionBooking");
 
 router.post("/", async (req, res) => {
-  console.log(req.body);
+  //console.log(req.body);
 
   const package = await Reception.findById(req.body.package);
   if (!package.bookings) {

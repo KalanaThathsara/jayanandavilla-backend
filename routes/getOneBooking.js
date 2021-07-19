@@ -3,14 +3,22 @@ const router = express.Router();
 
 const { DayoutBooking } = require("../modules/dayoutBooking");
 const { Booking } = require("../modules/bookingModule");
+const { ReceptionBooking } = require("../modules/receptionBooking");
+
+router.get("/reception/:id", async function (req, res) {
+  const recepBookings = await ReceptionBooking.findById(req.params.id)
+    .populate("package")
+    .populate("customer");
+
+  res.status(200).send(recepBookings);
+});
 
 router.get("/dayout/:id", async function (req, res) {
-  const dayoutBookings = await DayoutBooking.findById(req.params.id);
+  const dayoutBookings = await DayoutBooking.findById(req.params.id)
+    .populate("package")
+    .populate("customer");
 
-  dayoutBookings.status = "Canceled";
-  await dayoutBookings.save();
-
-  res.status(200).send("Booking Canceled");
+  res.status(200).send(dayoutBookings);
 });
 
 router.get("/room/:id", async function (req, res) {

@@ -23,7 +23,7 @@ var upload = multer({ storage: storage }).single("file");
 
 router.post("/add", function (req, res) {
   // console.log('Image Request Received')
-  // console.log(req.body)
+  // //console.log(req.body)
   console.log("Name of Image", req.headers.nameofimage);
   upload(req, res, function (err) {
     if (err instanceof multer.MulterError) {

@@ -4,12 +4,14 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const env = require("../envVariables");
+const sendMails = require("./sendMails");
 
 const { Booking } = require("../modules/bookingModule");
 const { Room } = require("../modules/roomModule");
+const { Customer } = require("../modules/customerModule");
 
 router.post("/", async (req, res) => {
-  console.log(req.body);
+  //console.log(req.body);
 
   let from = new Date(req.body.from);
   let to = new Date(req.body.to);
@@ -35,11 +37,17 @@ router.post("/", async (req, res) => {
     room: req.body.room,
     customer: req.body.customer,
     subtotal: subtotal,
+    remarks: [],
   });
 
   await newBooking.save();
 
-  // const room = await Room.findOne({_id: req.body.room})
+  //send mails
+  const customer = await Customer.findById(req.body.customer).select(
+    "-password"
+  );
+  sendMails.sendRoomBooked(room, customer, newBooking);
+
   let newBookings = room.bookings;
   bookedDates.forEach((d) => newBookings.push(d));
 

@@ -30,6 +30,9 @@ const ReceptionBooking = mongoose.model(
     status: {
       type: String,
     },
+    remarks: {
+      type: Array,
+    },
   })
 );
 
